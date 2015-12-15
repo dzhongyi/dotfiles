@@ -1,0 +1,3 @@
+alias vi="emacsclient -t"
+alias vim="emacsclient -t"
+alias e="emacsclient -t"
