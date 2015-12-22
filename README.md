@@ -1,2 +1,2 @@
 # dotfiles
-os x, bash, spacemacs
+vim, zsh, etc.
