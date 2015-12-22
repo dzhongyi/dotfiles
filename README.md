@@ -1,2 +1,5 @@
-# dotfiles
-vim, zsh, etc.
+### vim
+
+### zsh
+
+### emacs
