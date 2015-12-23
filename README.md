@@ -3,3 +3,9 @@
 ### zsh
 
 ### emacs
+
+### git
+
+- .gitconfig
+- .gitignore
+
