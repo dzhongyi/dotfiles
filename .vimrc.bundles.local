@@ -1,7 +1,0 @@
-" install local plugins.
-Bundle 'ternjs/tern_for_vim'
-Bundle 'jlanzarotta/bufexplorer'
-
-" uninstall spf13-vim's plugins.
-UnBundle 'Shougo/neosnippet-snippets'
-UnBundle 'bling/vim-bufferline'

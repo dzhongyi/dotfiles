@@ -1,3 +1,0 @@
-let g:spf13_no_autochdir = 1
-let g:spf13_edit_config_mapping='<Leader>ev'
-let g:spf13_apply_config_mapping='<Leader>sv'
