@@ -2,16 +2,21 @@
 
 " Plugins Install {{{1
 " --------------------
+" Init {{{2
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" }}}2
 
-" Plugins {{{2
+" Load Plugins {{{2
 " ------------
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'altercation/vim-colors-solarized'
@@ -25,10 +30,14 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
 " }}}2
 
+" After {{{2
 call vundle#end()
 filetype plugin indent on
+" }}}2
 " }}}1
 
 " General Options {{{1
@@ -199,6 +208,7 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " }}}2
 
 " youcompleteme {{{2
+nnoremap <Leader>jd :YcmCompleter GoTo<CR>
 let g:acp_enableAtStartup = 0
 " enable completion from tags
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -215,21 +225,26 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-" Haskell post write lint and check with ghcmod
-" $ `cabal install ghcmod` if missing and ensure
-" ~/.cabal/bin is in your $PATH.
-if !executable("ghcmod")
-	autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-endif
-" For snippet_complete marker.
-if !exists("g:spf13_no_conceal")
-	if has('conceal')
-		set conceallevel=2 concealcursor=i
-	endif
-endif
-" Disable the neosnippet preview candidate window
-" When enabled, there can be too much visual noise
-" especially when splits are used.
 set completeopt-=preview
+" }}}2
+
+" vim-go {{{2
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>co <Plug>(go-coverage)
 " }}}2
 " }}}1
