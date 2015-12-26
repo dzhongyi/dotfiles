@@ -1,16 +1,12 @@
 " ~/.vimrc
 
-" Plugins Install {{{1
+" SECTION: Plugins {{{1
 " --------------------
-" Init {{{2
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" }}}2
 
-" Load Plugins {{{2
-" ------------
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
@@ -32,15 +28,15 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
-" }}}2
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 
-" After {{{2
 call vundle#end()
 filetype plugin indent on
-" }}}2
 " }}}1
 
-" General Options {{{1
+" SECTION: General Options {{{1
 " --------------------
 syntax enable
 syntax on
@@ -91,11 +87,11 @@ if has('clipboard')
 endif
 " }}}1
 
-" Commands {{{1
+" SECTION: Commands {{{1
 command! -bar Invert :let &background = (&background=="light"?"dark":"light")
 " }}}1
 
-" Key Mappings {{{1
+" SECTION: Key Mappings {{{1
 " -----------------
 " Misc {{{2
 let mapleader=","
@@ -146,7 +142,7 @@ map <leader>et :tabe %%
 " }}}2
 " }}}1
 
-" Plugins Options {{{1
+" SECTION: Plugins Options {{{1
 " --------------------
 " ultisnips {{{2
 " Trigger configuration.
@@ -212,7 +208,6 @@ nnoremap <Leader>jd :YcmCompleter GoTo<CR>
 let g:acp_enableAtStartup = 0
 " enable completion from tags
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " remap Ultisnips for compatibility for YCM
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
@@ -247,4 +242,5 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>co <Plug>(go-coverage)
 " }}}2
+
 " }}}1
