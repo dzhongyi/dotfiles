@@ -13,6 +13,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'godlygeek/tabular'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'altercation/vim-colors-solarized'
@@ -31,6 +32,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'klen/python-mode'
 
 call vundle#end()
 filetype plugin indent on
@@ -99,6 +102,7 @@ let g:mapleader=","
 map <Leader>v :so ~/.vimrc<CR>
 map <silent> <Leader>tn :Invert<CR>
 nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <Leader>c :sp $MYVIMRC<CR>
 nnoremap Y y$
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
