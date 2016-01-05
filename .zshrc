@@ -49,7 +49,7 @@ ZSH_THEME="lambda"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras vundle github gnu-utils osx autojump brew vim web-search zsh_reload)
+plugins=(git git-extras vundle github gnu-utils osx autojump brew vim web-search zsh_reload go golang)
 
 # User configuration
 
@@ -76,3 +76,14 @@ export LANG=en_US.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+export PYTHONSTARTUP=~/.pythonstartup
+
+# aliases
+alias w="cd ~/projects/writing"
+alias p="cd ~/projects"
+alias ls='ls --color'
+alias ll='ll --color'
+alias la='la --color'
+
+# ls colors
+eval `dircolors ~/.dircolors`
