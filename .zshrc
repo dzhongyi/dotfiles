@@ -81,9 +81,10 @@ export PYTHONSTARTUP=~/.pythonstartup
 # aliases
 alias w="cd ~/projects/writing"
 alias p="cd ~/projects"
-alias ls='ls --color'
-alias ll='ll --color'
-alias la='la --color'
+alias t="cd ~/projects/test"
 
 # ls colors
 eval `dircolors ~/.dircolors`
+export PATH="$(brew --prefix php56)/bin:$PATH"
+export PATH="$(brew --prefix php56)/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbib:$PATH"
