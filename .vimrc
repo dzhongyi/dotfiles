@@ -21,17 +21,16 @@ Plugin 'bling/vim-airline'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimproc.vim'
+" Plugin 'Shougo/vimshell.vim'
+" Plugin 'Shougo/vimproc.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'klen/python-mode'
 
@@ -69,7 +68,7 @@ set sidescrolloff=5
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set background=light
+set background=dark
 set laststatus=2
 set backspace=indent,eol,start
 set ttimeout
@@ -102,14 +101,13 @@ let g:mapleader=","
 map <Leader>v :so ~/.vimrc<CR>
 map <silent> <Leader>tn :Invert<CR>
 nmap <silent> <leader>/ :nohlsearch<CR>
-nnoremap <Leader>c :sp $MYVIMRC<CR>
 nnoremap Y y$
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
-noremap j gj
-noremap k gk
+" noremap j gj
+" noremap k gk
 vnoremap < <gv
 vnoremap > >gv
 map zl zL
@@ -247,4 +245,17 @@ au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>co <Plug>(go-coverage)
 " }}}2
 
+" python-mode {{{2
+
+" }}}2
+
+" }}}1
+
+" SECTION: Fuctions{{{1
+" Removes trailing spaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+
+nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 " }}}1
