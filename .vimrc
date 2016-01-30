@@ -24,25 +24,26 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-" Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
 Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'Shougo/vimshell.vim'
-" Plugin 'Shougo/vimproc.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'klen/python-mode'
+Plugin 'majutsushi/tagbar'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on
 " }}}1
 
 " SECTION: General Options {{{1
-" --------------------
+" -----------------------------
 syntax enable
 syntax on
 color solarized
+set background=light
 set nu
 set nocompatible
 set autoindent
@@ -68,7 +69,6 @@ set sidescrolloff=5
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set background=dark
 set laststatus=2
 set backspace=indent,eol,start
 set ttimeout
@@ -81,20 +81,21 @@ set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
 if has('clipboard')
-	if has('unnamedplus')  " When possible use + register for copy-paste
-		set clipboard=unnamed,unnamedplus
-	else         " On mac and Windows, use * register for copy-paste
-		set clipboard=unnamed
-	endif
+  if has('unnamedplus')  " When possible use + register for copy-paste
+    set clipboard=unnamed,unnamedplus
+  else         " On mac and Windows, use * register for copy-paste
+    set clipboard=unnamed
+  endif
 endif
 " }}}1
 
 " SECTION: Commands {{{1
+" ----------------------
 command! -bar Invert :let &background = (&background=="light"?"dark":"light")
 " }}}1
 
 " SECTION: Key Mappings {{{1
-" -----------------
+" --------------------------
 " Misc {{{2
 let mapleader=","
 let g:mapleader=","
@@ -142,10 +143,24 @@ map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
 " }}}2
+
+" Git {{{2
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gl :Glog<CR>
+nmap <leader>gp :Git push<CR>
+nmap <leader>gw :Gwrite<CR>
+" }}}2
+
+" Tagbar {{{2
+nmap <leader>tt :Tagbar<CR>
+" }}}2
 " }}}1
 
 " SECTION: Plugins Options {{{1
-" --------------------
+" -----------------------------
 " ultisnips {{{2
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -175,31 +190,28 @@ let g:ctrlp_working_path_mode = 'ra'
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
-			\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-			\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+      \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 if executable('ag')
-	let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+  let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
 elseif executable('ack-grep')
-	let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+  let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
 elseif executable('ack')
-	let s:ctrlp_fallback = 'ack %s --nocolor -f'
-	" On Windows use "dir" as fallback command.
-elseif WINDOWS()
-	let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+  let s:ctrlp_fallback = 'ack %s --nocolor -f'
 else
-	let s:ctrlp_fallback = 'find %s -type f'
+  let s:ctrlp_fallback = 'find %s -type f'
 endif
 if exists("g:ctrlp_user_command")
-	unlet g:ctrlp_user_command
+  unlet g:ctrlp_user_command
 endif
 let g:ctrlp_user_command = {
-			\ 'types': {
-			\ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-			\ 2: ['.hg', 'hg --cwd %s locate -I .'],
-			\ },
-			\ 'fallback': s:ctrlp_fallback
-			\ }
+      \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+      \ },
+      \ 'fallback': s:ctrlp_fallback
+      \ }
 
 let g:ctrlp_extensions = ['funky']
 nnoremap <Leader>fu :CtrlPFunky<Cr>
@@ -246,16 +258,25 @@ au FileType go nmap <leader>co <Plug>(go-coverage)
 " }}}2
 
 " python-mode {{{2
+let g:pymode_rope_complete_on_dot = 0
+" }}}2
 
+" vim-airline {{{2
+let g:airline_theme = 'solarized'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 " }}}2
 
 " }}}1
 
 " SECTION: Fuctions{{{1
+" ---------------------
 " Removes trailing spaces
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}1
