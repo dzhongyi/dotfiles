@@ -1,6 +1,6 @@
 " ~/.vimrc
 
-" SECTION: Plugins {{{1
+" SECTION: Plugins {{{
 " --------------------
 set nocompatible
 filetype off
@@ -31,49 +31,69 @@ Plugin 'majutsushi/tagbar'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
-" }}}1
+" }}}
 
-" SECTION: General Options {{{1
+" SECTION: General Options {{{
 " -----------------------------
+" Colors {{{
 syntax enable
 syntax on
 color solarized
 set background=light
-set nu
-set nocompatible
+" }}}
+
+" Space & Tabs {{{
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
-set autoread
-set autowrite       " Automatically save before commands like :next and :make
-set incsearch       " Incremental search
-set hlsearch        " High light search
-set shiftround
-set showcmd         " Show (partial) command in status line.
-set showmatch       " Show matching brackets.
 set smartcase       " Case insensitive searches become sensitive with capitals
 set smarttab        " sw at the start of the line, sts everywhere else
-set expandtab
-set backspace=2
-set cmdheight=2
+" }}}
+
+" Folding {{{
 set foldmethod=marker
 set foldopen+=jump
+nnoremap <space> za
+" }}}
+
+" UI Layout {{{
+set nu
+set showcmd         " Show (partial) command in status line.
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set showmatch       " Show matching brackets.
+" }}}
+
+" Searching {{{
+set ignorecase
+set incsearch       " Incremental search
+set hlsearch        " High light search
+" }}}
+
+" Misc {{{
+set nocompatible
+set autoread
+set autowrite       " Automatically save before commands like :next and :make
+set shiftround
+set backspace=2
+set cmdheight=2
 set history=200
 set mouse=a
 set mousehide
 set scrolloff=3
 set sidescrolloff=5
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
 set laststatus=2
 set backspace=indent,eol,start
 set ttimeout
 set ttimeoutlen=50
 scriptencoding utf-8
-set wildmenu                    " Show list instead of just completing
-set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -85,16 +105,21 @@ if has('clipboard')
     set clipboard=unnamed
   endif
 endif
-" }}}1
+" }}}
 
-" SECTION: Commands {{{1
+" Crontab {{{
+autocmd filetype crontab setlocal nobackup nowritebackup
+" }}}
+" }}}
+
+" SECTION: Commands {{{
 " ----------------------
 command! -bar Invert :let &background = (&background=="light"?"dark":"light")
-" }}}1
+" }}}
 
-" SECTION: Key Mappings {{{1
+" SECTION: Key Mappings {{{
 " --------------------------
-" Misc {{{2
+" Misc {{{
 let mapleader=","
 let g:mapleader=","
 map <Leader>v :so ~/.vimrc<CR>
@@ -111,16 +136,16 @@ vnoremap < <gv
 vnoremap > >gv
 map zl zL
 map zh zH
-" }}}2
+" }}}
 
-" Emacs style ctrl+[AEFB] in insert mode {{{2
+" Emacs style ctrl+[AEFB] in insert mode {{{
 inoremap <C-A> <ESC>I
 inoremap <C-E> <ESC>A
 inoremap <C-F> <ESC>la
 inoremap <C-B> <ESC>i
-" }}}2
+" }}}
 
-" Code folding options {{{2
+" Code folding options {{{
 nmap <leader>f0 :set foldlevel=0<CR>
 nmap <leader>f1 :set foldlevel=1<CR>
 nmap <leader>f2 :set foldlevel=2<CR>
@@ -131,18 +156,18 @@ nmap <leader>f6 :set foldlevel=6<CR>
 nmap <leader>f7 :set foldlevel=7<CR>
 nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
-" }}}2
+" }}}
 
-" Some helpers to edit mode {{{2
+" Some helpers to edit mode {{{
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
-" }}}2
+" }}}
 
-" Git {{{2
+" Git {{{
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gc :Gcommit<CR>
@@ -150,16 +175,16 @@ nmap <leader>gb :Gblame<CR>
 nmap <leader>gl :Glog<CR>
 nmap <leader>gp :Git push<CR>
 nmap <leader>gw :Gwrite<CR>
-" }}}2
+" }}}
 
-" Tagbar {{{2
+" Tagbar {{{
 nmap <leader>tt :Tagbar<CR>
-" }}}2
-" }}}1
+" }}}
+" }}}
 
-" SECTION: Plugins Options {{{1
+" SECTION: Plugins Options {{{
 " -----------------------------
-" ultisnips {{{2
+" ultisnips {{{
 " Trigger configuration.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<C-J>"
@@ -167,9 +192,9 @@ let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-" }}}2
+" }}}
 
-" nerdtree {{{2
+" nerdtree {{{
 map <C-E> :NERDTreeToggle<CR>
 map <Leader>e :NERDTreeFind<CR>
 nmap <Leader>nt :NERDTreeFind<CR>
@@ -181,9 +206,9 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
-" }}}2
+" }}}
 
-" ctrlp {{{2
+" ctrlp {{{
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
@@ -213,9 +238,9 @@ let g:ctrlp_user_command = {
 
 let g:ctrlp_extensions = ['funky']
 nnoremap <Leader>fu :CtrlPFunky<Cr>
-" }}}2
+" }}}
 
-" youcompleteme {{{2
+" youcompleteme {{{
 nnoremap <Leader>jd :YcmCompleter GoTo<CR>
 let g:acp_enableAtStartup = 0
 " enable completion from tags
@@ -233,9 +258,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 set completeopt-=preview
-" }}}2
+" }}}
 
-" vim-go {{{2
+" vim-go {{{
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -253,107 +278,41 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <leader>co <Plug>(go-coverage)
-" }}}2
+" }}}
 
-" python-mode {{{2
-let g:pymode_rope_complete_on_dot = 0
-" }}}2
+" python-mode {{{
+" Override go-to.definition key shortcut to Ctrl-]
+let g:pymode_rope_goto_definition_bind = "<C-]>"
 
-" vim-airline {{{2
+" Don't load pylint code plugin
+let g:pymode_lint = 1
+
+" Don't load rope plugin
+let g:pymode_rope = 0
+
+let g:pymode_lint_ignore = "E501"
+" }}}
+
+" vim-airline {{{
 "let g:airline_theme = 'solarized'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-" }}}2
+" }}}
 
-" neocomplete {{{2
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-" }}}2
-
-" vim-markdown {{{2
+" vim-markdown {{{
 let g:vim_markdown_folding_disabled = 1
-" }}}2
+" }}}
 
-" }}}1
+" }}}
 
-" SECTION: Fuctions{{{1
+" SECTION: Fuctions{{{
 " ---------------------
 " Removes trailing spaces
 function! TrimWhiteSpace()
-    %s/\s\+$//e
+  %s/\s\+$//e
 endfunction
 
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" }}}1
-
-"autocmd filetype crontab setlocal nobackup nowritebackup
+" }}}
