@@ -33,6 +33,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'dracula/vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -43,8 +44,8 @@ filetype plugin indent on
 " Colors {{{
 syntax enable
 syntax on
-color solarized
-set background=light
+color dracula
+set background=dark
 " }}}
 
 " Space & Tabs {{{
