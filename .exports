@@ -29,3 +29,7 @@ export MANPAGER='less -X';
 
 # Add `gnubin` to the `$PATH`
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# HTTP & HTTPS proxy
+export https_proxy="conrad.hkv3-h.xduotai.com:16153"
+export http_proxy=$https_proxy
