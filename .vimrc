@@ -46,6 +46,7 @@ filetype plugin indent on
 syntax enable
 syntax on
 color dracula
+set background=dark
 " }}}
 
 " Space & Tabs {{{
