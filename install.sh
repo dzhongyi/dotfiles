@@ -4,7 +4,7 @@ msg() {
 }
 
 success() {
-    msg "\33[32m[✔]\33[0m ${1}${2}"
+  msg "\33[32m[✔]\33[0m ${1}${2}"
 }
 
 error() {
@@ -19,6 +19,7 @@ if [[ -d $HOME/.oh-my-zsh ]]; then
   cd $HOME/.oh-my-zsh && git pull && cd -
   success "Update oh-my-zsh."
 else
+  # TODO: Exec it open a new shell zsh and the script stop here, must input `exit` to continue this script.
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "Install oh-my-zsh."
 fi
