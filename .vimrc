@@ -33,7 +33,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'dracula/vim'
+Plugin 'zenorocha/dracula-theme',{'rtp':'vim/'}
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -186,11 +187,6 @@ nmap <leader>tt :Tagbar<CR>
 " SECTION: Plugins Options {{{
 " -----------------------------
 " ultisnips {{{
-" Trigger configuration.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<C-J>"
-let g:UltiSnipsJumpBackwardTrigger="<C-K>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " }}}
