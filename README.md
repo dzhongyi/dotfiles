@@ -10,8 +10,6 @@
 
 ### Bash/Zsh
 
-1. 1
-
 ### Tmux
 
 ### SSH
