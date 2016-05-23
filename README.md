@@ -1,5 +1,5 @@
-:cn::fork_and_knife: dotfiles
-=============================
+:fork_and_knife: dotfiles
+=========================
 
 ### Bash/Zsh
 
