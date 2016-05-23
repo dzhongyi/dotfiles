@@ -1,8 +1,8 @@
 # Make hard links
-for file in .{vimrc,zshrc,aliases,exports}; do
+for file in .{vimrc,zshrc,bashrc,aliases,exports,dircolors,gitconfig,tmux.conf,ssh/config}; do
   target=~/$file
   if [[ -f $target ]]; then
-    mv $target "$target.backup"
+    rm $target "$target.backup"
   fi
   ln $file $target
 done
