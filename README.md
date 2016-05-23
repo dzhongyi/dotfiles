@@ -1,15 +1,15 @@
 :fork_and_knife: dotfiles
 =========================
 
-# Bash/Zsh
+### Bash/Zsh
 
-# Tmux
+### Tmux
 
-# SSH
+### SSH
 
-# Vim
+### Vim
 
-# Emacs
+### Emacs
 
-# Git
+### Git
 
