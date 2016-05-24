@@ -63,4 +63,9 @@ else
 fi
 unset vundle_path
 vim +PluginInstall +qall
+# Build YCM.
+brew install cmake node go
+cd "$HOME/.vim/bundle/YouCompleteMe" && ./install.py --clang-completer --gocode-completer --tern-completer
+
+
 success "2. Installed vim plugins. To see more at ~/.vimrc."
