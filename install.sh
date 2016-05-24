@@ -23,6 +23,11 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "Install oh-my-zsh."
 fi
+# Download dracula theme of zsh.
+if [[ ! -f $HOME/.oh-my-zsh/themes/dracula.zsh-theme ]]; then
+  wget https://raw.githubusercontent.com/zenorocha/dracula-theme/master/zsh/dracula.zsh-theme -O $HOME/.oh-my-zsh/themes/dracula.zsh-theme
+  success "Downloaded zsh dracula theme."
+fi
 
 # Create hard links, for example .vimrc => ~/.vimrc.
 msg "\nStart create hard links..."
