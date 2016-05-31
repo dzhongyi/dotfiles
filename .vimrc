@@ -19,6 +19,7 @@ Plugin 'bling/vim-airline'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -138,6 +139,8 @@ vnoremap < <gv
 vnoremap > >gv
 map zl zL
 map zh zH
+map <C-Y> :call yapf#YAPF()<cr>
+imap <C-Y> <c-o>:call yapf#YAPF()<cr>
 " }}}
 
 " Emacs style ctrl+[AEFB] in insert mode {{{
