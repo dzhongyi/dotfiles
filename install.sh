@@ -51,7 +51,6 @@ unset files
 
 # Install vim plugins.
 # 1. Install vim plugins manage Vundle.vim
-# 2. Use Vundle install vim plugins.
 msg "\nStart install vim plugins..."
 vundle_path="$HOME/.vim/bundle/Vundle.vim"
 if [[ -d $vundle_path ]]; then
@@ -62,10 +61,10 @@ else
   success "1. Clone $vundle_path"
 fi
 unset vundle_path
+# 2. Use Vundle install vim plugins.
 vim +PluginInstall +qall
-# Build YCM.
-brew install cmake node go
-cd "$HOME/.vim/bundle/YouCompleteMe" && ./install.py --clang-completer --gocode-completer --tern-completer
-
-
 success "2. Installed vim plugins. To see more at ~/.vimrc."
+# 3. Build YCM.
+brew install cmake node go
+cd "$HOME/.vim/bundle/YouCompleteMe" && ./install.py --system-libclang --clang-completer --gocode-completer --tern-completer
+success "3. Build YCM done."
