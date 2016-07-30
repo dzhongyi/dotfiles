@@ -36,3 +36,4 @@ export http_proxy=$https_proxy
 
 # Phabricator arc command
 export PATH=$PATH:/opt/arcanist/bin
+export PATH="/usr/local/sbin:$PATH"
