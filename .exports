@@ -31,7 +31,7 @@ export MANPAGER='less -X';
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 # HTTP & HTTPS proxy
-export https_proxy="conrad.jpv3-h.xduotai.com:16153"
+export https_proxy="duotai:xTi7ZoRbs@139.224.30.93:16153"
 export http_proxy=$https_proxy
 
 # Phabricator arc command
