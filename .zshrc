@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
-plugins=(git python pip django virtualenv virtualenvwrapper zsh-completions autojump brew)
+plugins=(git zsh-completions autojump brew)
 autoload -U compinit && compinit
 
 # Load config files, for example .aliases, .exports...

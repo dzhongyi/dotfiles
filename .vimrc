@@ -36,6 +36,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'zenorocha/dracula-theme',{'rtp':'vim/'}
 Plugin 'rizzatti/dash.vim'
+Plugin 'metakirby5/codi.vim'
 
 call vundle#end()
 filetype plugin indent on
