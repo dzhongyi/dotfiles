@@ -34,6 +34,7 @@ settings = {
         ".tmux.conf",
         ".vimrc",
         ".zshrc",
+        ".tern-project",
     ],
 }
 
@@ -61,7 +62,7 @@ def install():
         target = os.path.join(s['home'], fname)
         if os.path.exists(target):
             warn("%s is exist, remove it." % target)
-            if os.path.isdir(target):
+            if os.path.isdir(target) and not os.path.islink(target):
                 shutil.rmtree(target)
             else:
                 os.remove(target)
