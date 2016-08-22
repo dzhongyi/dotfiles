@@ -61,7 +61,10 @@ def install():
         target = os.path.join(s['home'], fname)
         if os.path.exists(target):
             warn("%s is exist, remove it." % target)
-            os.remove(target)
+            if os.path.isdir(target):
+                shutil.rmtree(target)
+            else:
+                os.remove(target)
     for fname in configs:
         info('Create a symbolic link for %s' % fname)
         source = os.path.join(s['install_path'], fname)
