@@ -8,15 +8,9 @@
                          \/__,_ /\/___/  \/__/ \/_/   \/_/\/____/\/____/\/___/
 ```
 
-### Bash/Zsh
+### Init
 
-### Tmux
-
-### SSH
-
-### Vim
-
-### Emacs
-
-### Git
-
+```bash
+git clone https://github.com/iYgnohZ/dotfiles
+cd dotfiles && ./init.py
+```
