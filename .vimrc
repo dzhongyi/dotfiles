@@ -15,11 +15,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'godlygeek/tabular'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -34,9 +32,13 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'zenorocha/dracula-theme',{'rtp':'vim/'}
-Plugin 'rizzatti/dash.vim'
-Plugin 'metakirby5/codi.vim'
+Plugin 'crusoexia/vim-dracula'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'posva/vim-vue'
+Plugin 'tfnico/vim-gradle'
 
 call vundle#end()
 filetype plugin indent on
@@ -47,7 +49,7 @@ filetype plugin indent on
 " Colors {{{
 syntax enable
 syntax on
-color dracula
+color hybrid
 set background=dark
 " }}}
 
@@ -87,7 +89,7 @@ set autoread
 set autowrite       " Automatically save before commands like :next and :make
 set shiftround
 set backspace=2
-set cmdheight=2
+set cmdheight=1
 set history=200
 set mouse=a
 set mousehide
@@ -102,13 +104,7 @@ set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-if has('clipboard')
-  if has('unnamedplus')  " When possible use + register for copy-paste
-    set clipboard=unnamed,unnamedplus
-  else         " On mac and Windows, use * register for copy-paste
-    set clipboard=unnamed
-  endif
-endif
+set clipboard=unnamed
 " }}}
 
 " Crontab {{{
@@ -250,6 +246,7 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+let g:EclimCompletionMethod = 'omnifunc'
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -295,7 +292,6 @@ let g:pymode_lint_ignore = "E501"
 " }}}
 
 " vim-airline {{{
-"let g:airline_theme = 'solarized'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " }}}
@@ -313,7 +309,7 @@ function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
+nnoremap <silent> <Leader><space> :call TrimWhiteSpace()<CR>
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}
