@@ -2,22 +2,26 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import logging
 
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s: %(message)s",
+    level=logging.INFO
+)
 
 
 def link(source, target):
     if not os.path.exists(source):
-        raise Exception("Source file %s not exist." % source)
+        logging.error("Source file %s not exist." % source)
+        sys.exit(1)
 
     if os.path.exists(target):
-        raise Exception("Source file %s exist." % target)
-
-    logging.info("ln -s %s %s" % (source, target))
-
-    os.symlink(source, target)
+        logging.warn("Source file %s exist." % target)
+    else:
+        logging.info("ln -s %s %s" % (source, target))
+        os.symlink(source, target)
 
 
 def main():
