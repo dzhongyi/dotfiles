@@ -1,6 +1,7 @@
 [user]
 	email = iygnohz@gmail.com
 	name = iYgnohZ
+	signingkey = F20F932E7925175B
 [core]
 	excludesfile = /Users/iygnohz/.gitignore_global
 [difftool "sourcetree"]
