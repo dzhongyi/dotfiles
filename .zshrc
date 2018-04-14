@@ -5,19 +5,6 @@ fi
 
 # Customize to your needs...
 
-## Export
-export VISUAL="vim"
-export EDITOR="$VISUAL"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
-export PYSPARK_DRIVER_PYTHON=jupyter
-export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-
-### Emacs daemon
-export ALTERNATE_EDITOR=""
-export EDITOR=emacsclient
-
-
-
 ## Alias
 alias em="emacs -nw "
 alias sz="source $HOME/.zshrc"
@@ -57,8 +44,4 @@ done
 
 eval $(thefuck --alias)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Use GNU command replace Mac command.
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
