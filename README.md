@@ -11,6 +11,6 @@
 ### Init
 
 ```bash
-git clone https://github.com/iYgnohZ/dotfiles
+git clone https://github.com/dzhongyi/dotfiles
 cd dotfiles && ./init.py
 ```
