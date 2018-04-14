@@ -17,7 +17,7 @@ def link(source, target):
         logging.error("Source file %s not exist." % source)
         sys.exit(1)
 
-    if os.path.exists(target):
+    if os.path.isfile(target):
         logging.warn("Source file %s exist." % target)
     else:
         logging.info("ln -s %s %s" % (source, target))
@@ -25,7 +25,7 @@ def link(source, target):
 
 
 def main():
-    ignores = ["README.md", "init.py", ".git"]
+    ignores = [".DS_Store", "README.md", "init.py", ".git"]
     dotfiles = [f for f in os.listdir(".") if os.path.isfile(f) and f not in ignores]
     logging.info("dotfiles: %s" % dotfiles)
     home_dir = os.path.expanduser("~")

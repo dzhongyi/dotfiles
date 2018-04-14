@@ -1,9 +1,9 @@
 [user]
-	email = iygnohz@gmail.com
-	name = iYgnohZ
+	email = zhongyi.dai@advance.ai
+	name = zhongyi.dai
 	signingkey = F20F932E7925175B
 [core]
-	excludesfile = /Users/iygnohz/.gitignore_global
+	excludesfile = /Users/zhongyi/.gitignore_global
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -27,3 +27,5 @@
 	tool = Kaleidoscope
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[proxy]
+    http = 127.0.0.1:8001
