@@ -20,7 +20,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'mattn/gist-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
 Plug 'klen/python-mode'
@@ -28,15 +28,16 @@ Plug 'easymotion/vim-easymotion'
 Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer --gocode-completer --msvc 15 --tern-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --rust-completer'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
-Plug 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'brookhong/cscope.vim'
 
 call plug#end()
 filetype plugin indent on
@@ -48,7 +49,7 @@ filetype plugin indent on
 syntax enable
 syntax on
 color solarized
-set background=light
+set background=dark
 " }}}
 
 " Space & Tabs {{{
@@ -350,6 +351,26 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 " }}}
 
+" cscope {{{
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 " }}}
 
 " SECTION: Fuctions{{{
