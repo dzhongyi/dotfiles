@@ -69,18 +69,6 @@ alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 
-## Set python virtual env
-## `mkvirtualenv` and `mkvirtualenv3` use python 3.6 to create python virtual env,
-## `mkvirtualenv2` use python 2.7 to do it.
-# export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
-# export WORKON_HOME="$HOME/.virtualenvs"
-# export PROJECT_HOME="$HOME/Projects"
-# export VIRTUALENVWRAPPER_SCRIPT="/usr/local/bin/virtualenvwrapper.sh"
-# source "/usr/local/bin/virtualenvwrapper_lazy.sh"
-# alias mkvirtualenv2="mkvirtualenv -p /usr/local/bin/python2"
-# alias mkvirtualenv3="mkvirtualenv -p /usr/local/bin/python3"
-
-
 ## Set some command default use proxy, if you don't want to use a proxy please use _cmd.
 DEFAULT_PROXY_CMD=(
     "wget"
