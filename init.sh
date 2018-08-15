@@ -1,3 +1,5 @@
+# curl -fsSL https://raw.githubusercontent.com/zhongyiio/dotfiles/master/init.sh | bash -s project_name 0.0.1-SNAPSHOT
+
 #!/bin/sh
 # http://www.ruanyifeng.com/blog/2017/11/bash-set.html
 set -euo pipefail
