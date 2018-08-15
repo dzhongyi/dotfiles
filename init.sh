@@ -15,7 +15,7 @@ function usage() {
     echo ""
     echo "VERSION is this project initial version."
 }
-if [ "$#" -gt 1 ]; then
+if [ "$#" -gt 0 ]; then
     PROJECT_NAME=$1
     VERSION=${DEMO_VERSION}
     if [ -z "$1" ]; then
