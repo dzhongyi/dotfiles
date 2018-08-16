@@ -5,7 +5,7 @@
 set -euo pipefail
 DEMO_PROJECT_NAME="guardian-spring-cloud-demo"
 DEMO_VERSION="0.0.1"
-DEMO_REPO="git@repo.advai.org:zhongyi.dai/guardian-spring-cloud-demo.git"
+DEMO_REPO="git@repo.advai.org:guardian/guardian-spring-cloud-demo.git"
 function usage() {
     echo "usage: ./init.sh PROJECT_NAME VERSION"
     echo ""
