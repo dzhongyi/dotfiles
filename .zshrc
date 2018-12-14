@@ -4,6 +4,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+# Use GNU command replace Mac command.
+export PATH="$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+export PATH="$PATH:~/Projects/flutter/bin"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 ## Alias
 alias ..="cd .."
@@ -19,8 +24,8 @@ alias sz="source $HOME/.zshrc"
 alias d="cd $HOME/Dropbox/ && clear"
 alias dl="cd $HOME/Downloads/ && clear"
 alias dt="cd ~/Desktop"
-alias p="cd /Volumes/Projects/ && clear"
-alias t="cd $HOME/Projects/tests && clear"
+alias p="cd ~/Projects/ && clear"
+alias t="cd ~/Projects/tests && clear"
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
@@ -68,20 +73,15 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-
-## Set some command default use proxy, if you don't want to use a proxy please use _cmd.
-DEFAULT_PROXY_CMD=(
-    "wget"
-    "curl"
-    "brew"
-    "youtube-dl"
-    "git"
-)
-for cmd in ${DEFAULT_PROXY_CMD}; do
-    proxy_cmd="proxychains4 -q ${cmd}"
-    alias "_${cmd}"="${proxy_cmd}"
-done
-
-eval $(thefuck --alias)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH=~/.pyenv/bin:$PATH
+export PYENV_ROOT=~/.pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/zhongyi/.sdkman"
+[[ -s "/Users/zhongyi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zhongyi/.sdkman/bin/sdkman-init.sh"
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+export CI_INFRA_OPT_GIT_AUTH_TOKEN=wyFj6mbJ5S7sRGBXwryJ

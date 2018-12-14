@@ -48,7 +48,7 @@ filetype plugin indent on
 " Colors {{{
 syntax enable
 syntax on
-color solarized
+color hybrid
 set background=dark
 " }}}
 

@@ -1,7 +1,7 @@
 [user]
 	email = zhongyi.dai@advance.ai
-	name = zhongyi.dai
-	signingkey = F20F932E7925175B
+	name = Zhongyi Dai
+	signingkey = 9C0A0044E3E7AB2
 [core]
 	excludesfile = /Users/zhongyi/.gitignore_global
 [difftool "sourcetree"]
@@ -10,8 +10,6 @@
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
-[commit]
-	template = /Users/iygnohz/.stCommitMsg
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustexitcode = true
@@ -27,5 +25,3 @@
 	tool = Kaleidoscope
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-[proxy]
-    http = 127.0.0.1:8001
