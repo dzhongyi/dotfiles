@@ -36,10 +36,7 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'prompt'\
-  'git' \
-  'autosuggestions' \
-  'osx' \
-  'docker'
+  'autosuggestions'
 
 #
 # Autosuggestions

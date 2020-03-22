@@ -27,7 +27,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'plasticboy/vim-markdown'
 Plug 'airblade/vim-gitgutter'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --rust-completer'}
 Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0ng/vim-hybrid'
@@ -36,7 +35,6 @@ Plug 'junegunn/vim-easy-align'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'brookhong/cscope.vim'
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
@@ -204,28 +202,6 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 " }}}
 
-" YouCompleteMe {{{
-nnoremap <C-]> :YcmCompleter GoTo<CR>
-let g:acp_enableAtStartup = 0
-" enable completion from tags
-let g:ycm_collect_identifiers_from_tags_files = 1
-" remap Ultisnips for compatibility for YCM
-let g:UltiSnipsExpandTrigger = '<C-j>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-let g:EclimCompletionMethod = 'omnifunc'
-let g:ycm_confirm_extra_conf = 0
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-set completeopt-=preview
-" }}}
-
 " vim-go {{{
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -337,28 +313,6 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 " Replace the default dictionary completion with fzf-based fuzzy completion
 inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
-" }}}
-
-" cscope {{{
-nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>l :call ToggleLocationList()<CR>
-
-" s: Find this C symbol
-nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-" g: Find this definition
-nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-" d: Find functions called by this function
-nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-" c: Find functions calling this function
-nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-" t: Find this text string
-nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-" e: Find this egrep pattern
-nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-" f: Find this file
-nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-" i: Find files #including this file
-nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 " }}}
 
 " SECTION: Fuctions{{{

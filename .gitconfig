@@ -1,9 +1,7 @@
 [user]
-	email = zhongyi.dai@advance.ai
-	name = Zhongyi Dai
+	email = hi@daizhongyi.com
+	name = zhongyiio
 	signingkey = 9C0A0044E3E7AB2
-[core]
-	excludesfile = /Users/zhongyi/.gitignore_global
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
 	path = 

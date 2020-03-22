@@ -74,14 +74,49 @@ alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH=~/.pyenv/bin:$PATH
-export PYENV_ROOT=~/.pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/zhongyi/.sdkman"
 [[ -s "/Users/zhongyi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zhongyi/.sdkman/bin/sdkman-init.sh"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
-export CI_INFRA_OPT_GIT_AUTH_TOKEN=wyFj6mbJ5S7sRGBXwryJ
+export CI_INFRA_OPT_GIT_AUTH_TOKEN=6WxQGVT_Z5s4XDK4enot
+export PATH=/Users/zhongyi/Library/Android/sdk/platform-tools:$PATH
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+export PATH=~/.pyenv/bin:$PATH
+export PYENV_ROOT=~/.pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# added by Anaconda3 5.3.1 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/zhongyi/Projects/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     \eval "$__conda_setup"
+# else
+#     if [ -f "/Users/zhongyi/Projects/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/zhongyi/Projects/anaconda3/etc/profile.d/conda.sh"
+#         CONDA_CHANGEPS1=false conda activate base
+#     else
+#         \export PATH="/Users/zhongyi/Projects/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda init <<<
+
+[[ -s "/Users/zhongyi/.gvm/scripts/gvm" ]] && source "/Users/zhongyi/.gvm/scripts/gvm"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export CLOUDSDK_PYTHON=$(which python2)
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/zhongyi/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zhongyi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/zhongyi/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zhongyi/google-cloud-sdk/completion.zsh.inc'; fi

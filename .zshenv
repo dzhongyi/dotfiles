@@ -15,11 +15,6 @@ fi
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 
-# Spark
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
-export PYSPARK_DRIVER_PYTHON=jupyter
-export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-
 ### Emacs daemon
 export ALTERNATE_EDITOR=""
 
